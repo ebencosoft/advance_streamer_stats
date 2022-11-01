@@ -60,6 +60,10 @@ class SubscriptionController extends Controller
      {
         $result = Braintree\Subscription::cancel($request->subscription_id);
 
+        $cancelsubscription = Subscription::where('subscription_id',subscription_id)->update(['status' => 'cancel']);
+
+        
+
         return response()->json(
             
             $result,                
